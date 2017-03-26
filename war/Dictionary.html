@@ -1,0 +1,49 @@
+<!DOCTYPE html 
+    PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+	<title>Demo Dictionary</title>
+</head>
+
+<body>
+	<div class="jumbotron">
+		<div class="container">
+			<h1 class="display-3">Definition Lookup</h1>
+			<p>Look up meaning of word</p>
+			<div class=col-sm-12>
+				<input type='text' id='input_keyword' class=form-control value placeholder="Keyword" required autofocus>
+			</div>
+			</br>
+
+			<div class="col-sm-12 text-center">
+				<button class="btn btn-default" onclick="sendRequest()">Search</button>
+			</div>
+		</div>
+	</div>
+	<div id="content"></div>
+	<script src="https://code.jquery.com/jquery-3.2.0.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+	 crossorigin="anonymous"></script>
+	<script>
+	function sendRequest(){
+		var form_data_login = {
+                keyword: $("#input_keyword").val(),
+            };
+            $.ajax({
+                url:'gaejdictionaryservice',
+                type:'GET',
+                data: form_data_login,
+                success:function(data){
+                	  $('#content').html(data);
+                }
+            });
+	}
+		 
+	</script>
+</body>
+
+</html>
